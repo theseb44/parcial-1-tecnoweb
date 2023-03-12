@@ -51,10 +51,12 @@
 
             <div class="column">
                 <h3 class="has-text-weight-bold">Facturar a: </h3>
+                <input type="text" class="input is-small">
             </div>
 
             <div class="column">
                 <h2 class="has-text-weight-bold">Enviar a: </h2>
+                <input type="text" class="input is-small">
             </div>
 
             <div class="column">
@@ -84,28 +86,31 @@
 
         <table class="table is-bordered is-striped is-hoverable  is-fullwidth">
             <tr class="has-background-grey-lighter">
-                <th>Cant.</th>
+                <th>Producto</th>
                 <th>Descripcion</th>
+                <th>Cant.</th>
                 <th>Precio unitario</th>
+                <th>% de descuento</th>
                 <th>Importe</th>
             </tr>
             <tr>
-                <td>Juan</td>
-                <td>25</td>
-                <td>México</td>
-                <td>México</td>
-            </tr>
-            <tr>
-                <td>María</td>
-                <td>30</td>
-                <td>Argentina</td>
-                <td>México</td>
+                <td><input type="text" class="input is-small"></td>
+                <td><input type="text" class="input is-small"></td>
+                <td><input type="text" class="input is-small"></td>
+                <td><input type="text" class="input is-small"></td>
+                <td><input type="text" class="input is-small"></td>
+                <td><input type="text" class="input is-small"></td>
+                
             </tr>
 
-
+            
         </table>
 
+        <button class="button">Añadir producto</button>
+        <!--Este boton ha de tener la funcion de generar una fila de inputs mas para el usuario 
+        añadir un producto nuevo maximo 30(segun jesus(verificar))-->
     </div>
+    
 
 
 </body>
