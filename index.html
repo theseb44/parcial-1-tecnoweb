@@ -47,17 +47,17 @@
         </div>
 
     </div>
-    <form action="" class="container">
+    <form action="" class="container form " onsubmit="return validar()">
         <div class="columns">
 
             <div class="column">
                 <h3 class="has-text-weight-bold">Facturar a: </h3>
-                <input type="text" class="input is-small">
+                <input type="text" class="input is-success is-small has-border">
             </div>
 
             <div class="column">
                 <h2 class="has-text-weight-bold">Enviar a: </h2>
-                <input type="text" class="input is-small">
+                <input type="text" class="input is-success is-small">
             </div>
 
             <table class="table">
@@ -66,9 +66,9 @@
                         <label for="codigo" class=" has-text-right has-text-weight-bold">N de factura</label>
                     </td>
                     <td>
-                        <input type="text" class="input is-small codigo"
+                        <input type="text" class="input is-success is-small codigo"
                             pattern="([0-9]{4})-([1-12]{2})-([A-Z]{1})-([0-9]{4})"
-                            title="formato correcto: 2020-12-A-1234" placeholder="codigo de factura">
+                            title="formato correcto: 2020-12-A-1234" placeholder="codigo de factura" name="codigo">
                     </td>
                 </tr>
                 <tr>
@@ -76,7 +76,8 @@
                         <label for="fecha" class=" has-text-right has-text-weight-bold">Fecha</label>
                     </td>
                     <td>
-                        <input type="text" class="input is-small fecha" placeholder="ingresa la fecha">
+                        <input type="text" class="input is-success is-small fecha" placeholder="ingresa la fecha"
+                            name="fecha">
                     </td>
                 </tr>
                 <tr>
@@ -84,15 +85,17 @@
                         <label for="pedido" class=" has-text-right has-text-weight-bold"> N de pedido</label>
                     </td>
                     <td>
-                        <input type="text" class="input is-small pedido" placeholder="ingresar pedido">
+                        <input type="text" class="input is-success is-small pedido" placeholder="ingresar pedido"
+                            name="pedido">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="fecha" class=" has-text-right has-text-weight-bold">Fecha</label>
+                        <label for="fecha2" class=" has-text-right has-text-weight-bold">Fecha</label>
                     </td>
                     <td>
-                        <input type="text" class="input is-small fecha" placeholder="ingresa la fecha">
+                        <input type="text" class="input is-success is-small fecha" placeholder="ingresa la fecha"
+                            name="fecha2">
                     </td>
                 </tr>
                 <tr>
@@ -100,7 +103,8 @@
                         <label for="vencimiento" class=" has-text-right has-text-weight-bold">Vencimiento</label>
                     </td>
                     <td>
-                        <input type="text" class="input is-small vencimiento" placeholder="ingresar vencimiento">
+                        <input type="text" class="input is-success is-small vencimiento"
+                            placeholder="ingresar vencimiento" name="vencimiento">
                     </td>
                 </tr>
 
@@ -121,52 +125,41 @@
                     <th>Precio unitario</th>
                     <th>% de descuento</th>
                     <th>Importe</th>
+
                 </tr>
                 <tr>
 
                     <td>
-                        <div class="dropdown">
-                            <div class="dropdown">
-                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                                    <span>Menu</span>
-                                    <span class="icon is-small">
-                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                    </span>
-                                </button>
-                            </div>
-                            <div class="dropdown-menu" id="dropdown-menu" >
-                                <div class="dropdown-content">
-                                    <a href="#" class="dropdown-item">
-                                        Arroz
-                                    </a>
-                                    <a class="dropdown-item">
-                                        Frijoles
-                                    </a>
-                                    <a href="#" class="dropdown-item ">
-                                        Lentejas
-                                    </a>
-                                    <a href="#" class="dropdown-item">
-                                        Huevo
-                                    </a>
-                                    <a href="#" class="dropdown-item">
-                                        pollo
-                                    </a>
-                                </div>
-                            </div>
+                        <div class="select is-success">
+                            <select>
+
+                                <option value="Arroz">Arroz</option>
+                                <option value="Lentejas">Lentejas</option>
+                                <option value="Frijoles">Frijoles</option>
+                                <option value="Pollo">Pollo</option>
+                                <option value="Huevo">Huevo</option>
+
+                            </select>
                         </div>
                     </td>
-                    <td><input type="text" class="input is-small descripcion" placeholder="ingresa descripcion"></td>
-                    <td><input type="text" class="input is-small cantidad" max="30" placeholder="ingresa cantidad"></td>
-                    <td><input type="text" class="input is-small unitario" placeholder="ingresa precio unitario"></td>
-                    <td><input type="text" class="input is-small descuento" placeholder="ingresa descuento"></td>
-                    <td><input type="text" class="input is-small importe" placeholder="ingresa Importe"></td>
+                    <td><input type="text" class="input is-success is-small descripcion "
+                            placeholder="ingresa descripcion" require></td>
+                    <td><input type="text" class="input is-success is-small cantidad " max="30"
+                            placeholder="ingresa cantidad" required></td>
+                    <td><input type="text" class="input is-success is-small unitario"
+                            placeholder="ingresa precio unitario" required></td>
+                    <td><input type="text" class="input is-success is-small descuento" max="50"
+                            placeholder="ingresa descuento" required></td>
+                    <td><input type="text" class="input is-success is-small importe"
+                            placeholder="ingresa el costo de importe" required></td>
 
                 </tr>
 
 
             </table>
-            <button class="button">Añadir producto</button>
         </div>
+        <br>
+        <input type="submit" class="button envio" value="Añadir producto">
     </form>
 
     <script src="./main.js"></script>
