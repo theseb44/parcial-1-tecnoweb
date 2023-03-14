@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <title>Parcial 1</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js'>
+    </script>
 
-   
 
 </head>
 
@@ -45,8 +46,8 @@
             </div>
         </div>
 
-
-
+    </div>
+    <form action="" class="container">
         <div class="columns">
 
             <div class="column">
@@ -59,60 +60,131 @@
                 <input type="text" class="input is-small">
             </div>
 
-            <div class="column">
-                <h2 class=" has-text-right has-text-weight-bold">
-                    N de factura
-                    <br>
-                    fecha
-                    <br>
-                    N de pedido
-                    <br>
-                    fecha
-                    <br>
-                    Vencimiento
-                </h2>
-            </div>
+            <table class="table">
+                <tr>
+                    <td>
+                        <label for="codigo" class=" has-text-right has-text-weight-bold">N de factura</label>
+                    </td>
+                    <td>
+                        <input type="text" class="input is-small codigo"
+                            pattern="([0-9]{4})-([1-12]{2})-([A-Z]{1})-([0-9]{4})"
+                            title="formato correcto: 2020-12-A-1234" placeholder="codigo de factura">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="fecha" class=" has-text-right has-text-weight-bold">Fecha</label>
+                    </td>
+                    <td>
+                        <input type="text" class="input is-small fecha" placeholder="ingresa la fecha">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="pedido" class=" has-text-right has-text-weight-bold"> N de pedido</label>
+                    </td>
+                    <td>
+                        <input type="text" class="input is-small pedido" placeholder="ingresar pedido">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="fecha" class=" has-text-right has-text-weight-bold">Fecha</label>
+                    </td>
+                    <td>
+                        <input type="text" class="input is-small fecha" placeholder="ingresa la fecha">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="vencimiento" class=" has-text-right has-text-weight-bold">Vencimiento</label>
+                    </td>
+                    <td>
+                        <input type="text" class="input is-small vencimiento" placeholder="ingresar vencimiento">
+                    </td>
+                </tr>
 
-            <div class="column">
-                <h2 class=" has-text-right has-text-weight-bold">
+            </table>
 
-                </h2>
-            </div>
         </div>
 
-    </div>
-    <br>
-    <div class="container ">
-
-        <table class="table is-bordered is-striped is-hoverable  is-fullwidth">
-            <tr class="has-background-grey-lighter">
-                <th>Producto</th>
-                <th>Descripcion</th>
-                <th>Cant.</th>
-                <th>Precio unitario</th>
-                <th>% de descuento</th>
-                <th>Importe</th>
-            </tr>
-            <tr>
-                <td><input type="text" class="input is-small"></td>
-                <td><input type="text" class="input is-small"></td>
-                <td><input type="text" class="input is-small"></td>
-                <td><input type="text" class="input is-small"></td>
-                <td><input type="text" class="input is-small"></td>
-                <td><input type="text" class="input is-small"></td>
-                
-            </tr>
-
-            
-        </table>
-
-        <button class="button">Añadir producto</button>
-        <!--Este boton ha de tener la funcion de generar una fila de inputs mas para el usuario 
-        añadir un producto nuevo maximo 30(segun jesus(verificar))-->
-    </div>
-    
 
 
+        <br>
+        <div class="container ">
+
+            <table class="table is-bordered is-striped is-hoverable  is-fullwidth">
+                <tr class="has-background-grey-lighter">
+                    <th>Producto</th>
+                    <th>Descripcion</th>
+                    <th>Cant.</th>
+                    <th>Precio unitario</th>
+                    <th>% de descuento</th>
+                    <th>Importe</th>
+                </tr>
+                <tr>
+
+                    <td>
+                        <div class="dropdown">
+                            <div class="dropdown">
+                                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                    <span>Menu</span>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu" id="dropdown-menu" >
+                                <div class="dropdown-content">
+                                    <a href="#" class="dropdown-item">
+                                        Arroz
+                                    </a>
+                                    <a class="dropdown-item">
+                                        Frijoles
+                                    </a>
+                                    <a href="#" class="dropdown-item ">
+                                        Lentejas
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        Huevo
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        pollo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td><input type="text" class="input is-small descripcion" placeholder="ingresa descripcion"></td>
+                    <td><input type="text" class="input is-small cantidad" max="30" placeholder="ingresa cantidad"></td>
+                    <td><input type="text" class="input is-small unitario" placeholder="ingresa precio unitario"></td>
+                    <td><input type="text" class="input is-small descuento" placeholder="ingresa descuento"></td>
+                    <td><input type="text" class="input is-small importe" placeholder="ingresa Importe"></td>
+
+                </tr>
+
+
+            </table>
+            <button class="button">Añadir producto</button>
+        </div>
+    </form>
+
+    <script src="./main.js"></script>
+    <script>
+        const dropdown =
+            document.querySelector('.dropdown');
+        const active =
+            document.querySelector('.is-active')
+        document.body.addEventListener('click', function () {
+            if (active) {
+                dropdown.classList.remove('is-active')
+            }
+        })
+        dropdown.addEventListener('click', function (event) {
+            event.stopPropagation();
+            this.classList.toggle('is-active');
+        });
+    </script>
 </body>
 
 </html>
