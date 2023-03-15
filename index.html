@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>Parcial 1</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js'>
     </script>
 
@@ -47,12 +49,12 @@
         </div>
 
     </div>
-    <form action="" class="container form " onsubmit="return validar()">
+    <form action="" class="container form">
         <div class="columns">
 
             <div class="column">
                 <h3 class="has-text-weight-bold">Facturar a: </h3>
-                <input type="text" class="input is-success is-small has-border">
+                <input type="text" class="input is-success is-small has-border" placeholder="Nombre del comprador">
             </div>
 
             <div class="column">
@@ -67,7 +69,7 @@
                     </td>
                     <td>
                         <input type="text" class="input is-success is-small codigo"
-                            pattern="([0-9]{4})-([1-12]{2})-([A-Z]{1})-([0-9]{4})"
+                            pattern="([2020-2030]{4})-([1-12]{2})-([A-Z]{1})-([0-9]{4})"
                             title="formato correcto: 2020-12-A-1234" placeholder="codigo de factura" name="codigo">
                     </td>
                 </tr>
@@ -76,7 +78,7 @@
                         <label for="fecha" class=" has-text-right has-text-weight-bold">Fecha</label>
                     </td>
                     <td>
-                        <input type="text" class="input is-success is-small fecha" placeholder="ingresa la fecha"
+                        <input type="date" class="input is-success is-small fecha" placeholder="ingresa la fecha"
                             name="fecha">
                     </td>
                 </tr>
@@ -94,7 +96,7 @@
                         <label for="fecha2" class=" has-text-right has-text-weight-bold">Fecha</label>
                     </td>
                     <td>
-                        <input type="text" class="input is-success is-small fecha" placeholder="ingresa la fecha"
+                        <input type="date" class="input is-success is-small fecha" placeholder="ingresa la fecha"
                             name="fecha2">
                     </td>
                 </tr>
@@ -115,7 +117,7 @@
 
 
         <br>
-        <div class="container ">
+        <div class="container">
 
             <table class="table is-bordered is-striped is-hoverable  is-fullwidth">
                 <tr class="has-background-grey-lighter">
@@ -131,7 +133,7 @@
 
                     <td>
                         <div class="select is-success">
-                            <select>
+                            <select class="opcion">
 
                                 <option value="Arroz">Arroz</option>
                                 <option value="Lentejas">Lentejas</option>
@@ -143,7 +145,7 @@
                         </div>
                     </td>
                     <td><input type="text" class="input is-success is-small descripcion "
-                            placeholder="ingresa descripcion" require></td>
+                            placeholder="ingresa descripcion"></td>
                     <td><input type="text" class="input is-success is-small cantidad " max="30"
                             placeholder="ingresa cantidad" required></td>
                     <td><input type="text" class="input is-success is-small unitario"
@@ -153,14 +155,35 @@
                     <td><input type="text" class="input is-success is-small importe"
                             placeholder="ingresa el costo de importe" required></td>
 
+                    
                 </tr>
-
-
             </table>
+            <div class="container botonEn">
+                <button class="button is-medium is-success envio" >Añadir</button>
+            </div>
+           
+
         </div>
         <br>
-        <input type="submit" class="button envio" value="Añadir producto">
+
     </form>
+    <br>
+    <br>
+    <div class="container">
+
+        <h1 class="title is-3">Factura</h1>
+        <table class="table is-fullwidth Tproductos">
+            <tr class="has-background-grey-lighter">
+                <th>Producto</th>
+                <th>Descripcion</th>
+                <th>Cant.</th>
+                <th>Precio unitario</th>
+                <th>% de descuento</th>
+                <th>Importe</th>
+                <th>Total</th>
+            </tr>
+        </table>
+    </div>
 
     <script src="./main.js"></script>
     <script>
