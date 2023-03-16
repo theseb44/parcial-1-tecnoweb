@@ -128,7 +128,7 @@
                 </tr>
                 <tr>
 
-                    <td>
+                    <td id="validaOpcion">
                         <div class="select is-success">
                             <select class="opcion" id="opcion" >
                                 <option value="Ninguno">Ninguno</option>
@@ -141,14 +141,22 @@
                             </select>
                         </div>
                     </td>
-                    <td><input type="text" class="input is-success is-small" id="descripcion"
-                            placeholder="ingresa descripcion"></td>
-                    <td><input type="text" class="input is-success is-small" id="cantidad" max="30"
-                            placeholder="ingresa cantidad" required></td>
-                    <td><input type="text" class="input is-success is-small unitario" id="unitario"
-                            placeholder="ingresa precio unitario" required></td>
-                    <td><input type="text" class="input is-success is-small descuento" id="descuento" max="50"
-                            placeholder="ingresa descuento" required></td>
+                    <td>
+                        <input type="text" class="input is-success is-small" id="descripcion"
+                            placeholder="ingresa descripcion">
+                    </td>
+                    <td id="validaCantidad">
+                        <input type="text" class="input is-success is-small" id="cantidad" max="30"
+                            placeholder="ingresa cantidad" required>
+                    </td>
+                    <td >
+                        <input type="text" class="input is-success is-small unitario" id="unitario"
+                            placeholder="ingresa precio unitario" required>
+                    </td>
+                    <td id="validaDescuento">
+                        <input type="text" class="input is-success is-small descuento" id="descuento" max="50"
+                            placeholder="ingresa descuento" required>
+                    </td>
                     <td><input type="text" class="input is-success is-small importe" id="importe"
                             placeholder="ingresa el costo de importe" required></td>
 
