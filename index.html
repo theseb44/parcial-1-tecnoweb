@@ -8,9 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
     <title>Parcial 1</title>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js'>
-    </script>
 
 
 </head>
@@ -133,8 +130,8 @@
 
                     <td>
                         <div class="select is-success">
-                            <select class="opcion">
-
+                            <select class="opcion" id="opcion" >
+                                <option value="Ninguno">Ninguno</option>
                                 <option value="Arroz">Arroz</option>
                                 <option value="Lentejas">Lentejas</option>
                                 <option value="Frijoles">Frijoles</option>
@@ -144,22 +141,22 @@
                             </select>
                         </div>
                     </td>
-                    <td><input type="text" class="input is-success is-small descripcion "
+                    <td><input type="text" class="input is-success is-small" id="descripcion"
                             placeholder="ingresa descripcion"></td>
-                    <td><input type="text" class="input is-success is-small cantidad " max="30"
+                    <td><input type="text" class="input is-success is-small" id="cantidad" max="30"
                             placeholder="ingresa cantidad" required></td>
-                    <td><input type="text" class="input is-success is-small unitario"
+                    <td><input type="text" class="input is-success is-small unitario" id="unitario"
                             placeholder="ingresa precio unitario" required></td>
-                    <td><input type="text" class="input is-success is-small descuento" max="50"
+                    <td><input type="text" class="input is-success is-small descuento" id="descuento" max="50"
                             placeholder="ingresa descuento" required></td>
-                    <td><input type="text" class="input is-success is-small importe"
+                    <td><input type="text" class="input is-success is-small importe" id="importe"
                             placeholder="ingresa el costo de importe" required></td>
 
                     
                 </tr>
             </table>
             <div class="container botonEn">
-                <button class="button is-medium is-success envio" >Añadir</button>
+                <button class="button is-medium is-success" id="envio" >Añadir</button>
             </div>
            
 
@@ -172,7 +169,7 @@
     <div class="container">
 
         <h1 class="title is-3">Factura</h1>
-        <table class="table is-fullwidth Tproductos">
+        <table class="table is-fullwidth " id="Tproductos">
             <tr class="has-background-grey-lighter">
                 <th>Producto</th>
                 <th>Descripcion</th>
@@ -186,21 +183,7 @@
     </div>
 
     <script src="./main.js"></script>
-    <script>
-        const dropdown =
-            document.querySelector('.dropdown');
-        const active =
-            document.querySelector('.is-active')
-        document.body.addEventListener('click', function () {
-            if (active) {
-                dropdown.classList.remove('is-active')
-            }
-        })
-        dropdown.addEventListener('click', function (event) {
-            event.stopPropagation();
-            this.classList.toggle('is-active');
-        });
-    </script>
+    
 </body>
 
 </html>

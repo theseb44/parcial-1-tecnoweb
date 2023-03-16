@@ -1,82 +1,64 @@
-let opcion = document.querySelector(".opcion").value;
-let descripcion = document.querySelector(".descripcion").value
-let cantidad = document.querySelector(".cantidad").value;
-let porcdescuento = document.querySelector(".descuento").value;
-let precioUni = document.querySelector(".unitario").value;
-let costimporte = document.querySelector(".importe").value;
-let tabla = document.querySelector(".Tproductos")
-let envio = document.querySelector(".envio")
-//envio.addEventListener("click", AñadirProductos())
+let opcion = document.getElementById("opcion")
+let descripcion = document.getElementById("descripcion")
+let cantidad = document.getElementById("cantidad")
+let porcdescuento = document.getElementById("descuento");
+let precioUni = document.getElementById("unitario");
+let costimporte = document.getElementById("importe");
+let tabla = document.getElementById("Tproductos")
+let envio = document.getElementById("envio")
 
-let object = {
+const prueba = (e) => {
 
-    nomproducto: opcion,
-    descripcion: descripcion,
-    cantidad: cantidad,
-    descuento: porcdescuento,
-    precio: precioUni,
-    importe: costimporte
-};
+    e.preventDefault();
 
-console.log(nomproducto)
-console.log(descripcion)
+    console.log(opcion.value)
+    console.log(descripcion.value)
+    console.log(cantidad.value)
+    console.log(porcdescuento.value)
 
-function validar(){
-
-    let cantidad = document.querySelector(".cantidad").value;
-    if(cantidad > 30 || cantidad< 1){
-
-        alert("la cantidad ingresada no es valida")
-    }
-
-    let descuento = document.querySelector(".descuento").value;
-    if(descuento > 50 || descuento < 1){
-
-        alert("el descuento ingresado no es valido")
-    }
 
 }
 
-function calcularTotal(){
+const AñadirProducto = () => {
 
-    let total = cantidad * precioUni;
-    let descuento = total * (porcdescuento/100)
-    total += costimporte;
-    total = total - descuento;
+    let producto = {
 
-    alert(total);
-}
+        nomproducto: opcion.value,
+        descrip: descripcion.value,
+        cantidad: cantidad.value,
+        descuento: porcdescuento.value,
+        precio: precioUni.value,
+        importe: costimporte.value
 
+    };
 
+    let nomprotd = document.createElement("td")
+    nomprotd.innerHTML = producto.nomproducto
 
-const AñadirProductos = ()=>{
+    let descripciontd = document.createElement("td")
+    descripciontd.innerHTML = producto.descrip
 
-    let nompro = document.createElement("td")
-    nompro.innerHTML = object.nomproducto
+    let cantidadtd = document.createElement("td")
+    cantidadtd.innerHTML = "10000"
 
-    let descripcion = document.createElement("td")
-    descripcion.innerHTML = object.descripcion
+    let preciotd = document.createElement("td")
+    preciotd.innerHTML = producto.precio
 
-    let cantidad = document.createElement("td")
-    cantidad.innerHTML = object.cantidad
+    let descuentotd = document.createElement("td")
+    descuentotd.innerHTML = producto.descuento
 
-    let precio = document.createElement("td")
-    precio.innerHTML = object.precio
-
-    let descuento = document.createElement("td")
-    descuento.innerHTML = object.descuento
-
-    let importe = document.createElement("td")
-    importe.innerHTML = object.importe
+    let importetd = document.createElement("td")
+    importetd.innerHTML = producto.importe
 
     let fila = document.createElement("tr")
-    fila.appendChild(nompro)
-    fila.appendChild(descripcion)
-    fila.appendChild(cantidad)
-    fila.appendChild(precio)
-    fila.appendChild(descuento)
-    fila.appendChild(importe)
+    fila.appendChild(nomprotd)
+    fila.appendChild(descripciontd)
+    fila.appendChild(cantidadtd)
+    fila.appendChild(preciotd)
+    fila.appendChild(descuentotd)
+    fila.appendChild(importetd)
 
+    console.log(producto)
     tabla.appendChild(fila)
 }
-envio.addEventListener("click", AñadirProductos())
+envio.addEventListener("click", AñadirProducto())
