@@ -14,6 +14,7 @@ let con = 0
 let botonEliminar = document.getElementById("botonEliminar")
 let botonBuscar = document.getElementById("botonBuscar")
 let Npedido = document.getElementById("Npedido")
+let adverRep = document.getElementById("adverRepeticion")
 
 
 const opValidacion = () => {
@@ -113,7 +114,7 @@ const AñadirProducto = (e) => {
 
         let producto = {
 
-            idProducto: con += 1,
+            // idProducto: con += 1, // discutir con jose despues
             nomproducto: opcion.value,
             descrip: descripcion.value,
             cantidad: cantidad.value,
@@ -123,51 +124,63 @@ const AñadirProducto = (e) => {
 
         };
 
-        let idProducto = document.createElement("td")
-        idProducto.innerHTML = con += 1;
+        if (BuscarProducto(producto) == false) {
 
-        let nomprotd = document.createElement("td")
-        nomprotd.innerHTML = producto.nomproducto
+            let idProducto = document.createElement("td")
+            idProducto.innerHTML = con += 1;
 
-        let descripciontd = document.createElement("td")
-        descripciontd.innerHTML = producto.descrip
+            let nomprotd = document.createElement("td")
+            nomprotd.innerHTML = producto.nomproducto
 
-        let cantidadtd = document.createElement("td")
-        cantidadtd.innerHTML = producto.cantidad
+            let descripciontd = document.createElement("td")
+            descripciontd.innerHTML = producto.descrip
 
-        let preciotd = document.createElement("td")
-        preciotd.innerHTML = producto.precio
+            let cantidadtd = document.createElement("td")
+            cantidadtd.innerHTML = producto.cantidad
 
-        let descuentotd = document.createElement("td")
-        descuentotd.innerHTML = producto.descuento
+            let preciotd = document.createElement("td")
+            preciotd.innerHTML = producto.precio
 
-        let importetd = document.createElement("td")
-        importetd.innerHTML = producto.importe
+            let descuentotd = document.createElement("td")
+            descuentotd.innerHTML = producto.descuento
 
-        let total = document.createElement("td")
-        total.innerHTML = calcularTotal();
+            let importetd = document.createElement("td")
+            importetd.innerHTML = producto.importe
 
-        let botonEliminar = document.createElement("button")
-        botonEliminar.innerHTML = "Eliminar"
-        botonEliminar.className = "button is-small is-danger";
-        botonEliminar.id = "botonEliminar"
+            let total = document.createElement("td")
+            total.innerHTML = calcularTotal();
 
-        let fila = document.createElement("tr")
-        fila.id = `filaN${con += 1}`;
-        fila.appendChild(idProducto)
-        fila.appendChild(nomprotd)
-        fila.appendChild(descripciontd)
-        fila.appendChild(cantidadtd)
-        fila.appendChild(preciotd)
-        fila.appendChild(descuentotd)
-        fila.appendChild(importetd)
-        fila.appendChild(total)
-        fila.appendChild(botonEliminar)
+            let botonEliminar = document.createElement("button")
+            botonEliminar.innerHTML = "Eliminar"
+            botonEliminar.className = "button is-small is-danger";
+            botonEliminar.id = `botonEliminar${con}`
 
-        console.log(producto)
-        tabla.appendChild(fila)
+            let fila = document.createElement("tr")
+            fila.id = `filaN${con}`;
+            fila.appendChild(idProducto)
+            fila.appendChild(nomprotd)
+            fila.appendChild(descripciontd)
+            fila.appendChild(cantidadtd)
+            fila.appendChild(preciotd)
+            fila.appendChild(descuentotd)
+            fila.appendChild(importetd)
+            fila.appendChild(total)
+            fila.appendChild(botonEliminar)
 
-        datos.add(producto)
+            console.log(producto)
+            tabla.appendChild(fila)
+
+
+
+            datos.add(producto)
+        } else {
+            adverRep.style.color = "red"
+            adverRep.style.fontSize = "medium"
+            adverRep.innerHTML = "Los productos no se pueden repetir"
+            setTimeout(() => {
+                adverRep.innerHTML = ""
+            }, 3500)
+        }
     }
 }
 
@@ -178,14 +191,15 @@ const EliminarProducto = () => {
     //filaN se utilizara para eliminar la fila despues que se encuentre
 }
 
-const BuscarProducto = () => {
+function BuscarProducto(producto){
 
 
-    for (let producto of datos) {
-        if (producto.idProducto === Npedido) {
-            //TODO falta pensar como mostrarlo
+    for (let productoI of datos) {
+        if (productoI.nomproducto == producto.nomproducto) {
+            return true
         }
     }
+    return false
 }
 
 
