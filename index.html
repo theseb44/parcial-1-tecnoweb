@@ -66,8 +66,9 @@
                     </td>
                     <td>
                         <input type="text" class="input is-success is-small codigo"
-                            pattern="([2020-2030]{4})-([1-12]{2})-([A-Z]{1})-([0-9]{4})"
-                            title="formato correcto: 2020-12-A-1234" placeholder="codigo de factura" disabled name="codigo">
+                            
+                            title="formato correcto: 2020-12-A-1234" placeholder="codigo de factura" name="codigo"
+                            id="codigoProducto" >
                     </td>
                 </tr>
                 <tr>
@@ -81,7 +82,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="pedido" class=" has-text-right has-text-weight-bold" id="Npedido"> N de pedido</label>
+                        <label for="pedido" class=" has-text-right has-text-weight-bold" id="Npedido"> N de
+                            pedido</label>
                     </td>
                     <td>
                         <input type="text" class="input is-success is-small pedido" placeholder="ingresar pedido"
@@ -108,19 +110,16 @@
                 </tr>
 
                 <tr>
-                    <td></td>
-                    <td>
-                        <Button class="button is-success" id="botonBuscar">Buscar producto</Button>
-                    </td>
+                    
+                    <td id="tdprueba" ></td>
                 </tr>
 
             </table>
 
         </div>
-
-
-
-        <br>
+        
+        
+        
         <div class="container">
 
             <table class="table is-bordered is-striped is-hoverable  is-fullwidth">
@@ -134,11 +133,11 @@
 
                 </tr>
                 <tr>
-                    
+
 
                     <td id="validaOpcion">
                         <div class="select is-success">
-                            <select class="opcion" id="opcion" >
+                            <select class="opcion" id="opcion">
                                 <option value="Ninguno">Ninguno</option>
                                 <option value="Arroz">Arroz</option>
                                 <option value="Lentejas">Lentejas</option>
@@ -157,31 +156,35 @@
                         <input type="text" class="input is-success is-small" id="cantidad" max="30"
                             placeholder="ingresa cantidad" required>
                     </td>
-                    <td >
+                    <td>
                         <input type="text" class="input is-success is-small unitario" id="unitario"
                             placeholder="ingresa precio unitario" required>
                     </td>
                     <td id="validaDescuento">
                         <input type="text" class="input is-success is-small descuento" id="descuento" max="50"
-                            placeholder="ingresa descuento" >
+                            placeholder="ingresa descuento">
                     </td>
                     <td><input type="text" class="input is-success is-small importe" id="importe"
                             placeholder="ingresa el costo de importe" required></td>
 
-                    
+
                 </tr>
             </table>
-            <div class="container botonEn">
-                <button class="button is-medium is-success" id="envio" >Añadir</button>
-            </div>
-            <p id="adverRepeticion" class="message is-centered"></p>
-           
+            
+
 
         </div>
+        
+        <div class="container botonEn">
+            <button class="button is-medium is-success " id="envio">Añadir</button>
+        </div>
+        <p id="adverRepeticion" class="message is-centered"></p>
+
         <br>
 
     </form>
-    <br>
+
+
     <br>
     <div class="container">
 
@@ -200,9 +203,10 @@
             </tr>
         </table>
     </div>
-
+    <br>
+    <br>
     <script src="./main.js"></script>
-    
+
 </body>
 
 </html>

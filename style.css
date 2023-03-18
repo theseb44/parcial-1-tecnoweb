@@ -4,3 +4,9 @@
     justify-content: center;
     align-items: center;
 }
+
+#adverRepeticion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

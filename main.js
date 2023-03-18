@@ -10,11 +10,14 @@ let tdOpcion = document.getElementById("validaOpcion")
 let tdCan = document.getElementById("validaCantidad")
 let tddescuento = document.getElementById("validaDescuento")
 let datos = new Set();
-let con = 0
 let botonEliminar = document.getElementById("botonEliminar")
 let botonBuscar = document.getElementById("botonBuscar")
 let Npedido = document.getElementById("Npedido")
 let adverRep = document.getElementById("adverRepeticion")
+let codigoproducto = document.getElementById("codigoProducto")
+let tdDePrueba = document.getElementById("tdprueba")
+
+const pattern = /^([2020-2022]{4})-([1-12]{2})-([A-Z]{1})-([0-9]{4})$/;
 
 
 const opValidacion = () => {
@@ -42,7 +45,7 @@ const opValidacion = () => {
 
 const canValidacion = () => {
     let adverP = document.getElementById("adverCan")
-    if (+cantidad.value > 30 || +cantidad.value < 0) {
+    if (+cantidad.value > 30 || +cantidad.value < 0 || cantidad.value == "") {
         if (adverP === null) {
             let advertencia = document.createElement("P")
             advertencia.id = "adverCan"
@@ -63,7 +66,7 @@ const canValidacion = () => {
 
 const porcValidacion = () => {
     let adverP = document.getElementById("adverPorc")
-    if (+porcdescuento.value > 50) {
+    if (+porcdescuento.value > 50 || +porcdescuento.value == "") {
         if (adverP === null) {
             let advertencia = document.createElement("P")
             advertencia.id = "adverPorc"
@@ -81,13 +84,36 @@ const porcValidacion = () => {
     }
     return true
 }
+const validacionCodigo = () => {
+
+    let adverP = document.getElementById("advercodigo")
+    if (codigoproducto.value == "" || pattern.test(codigoproducto.value) == false) {
+        if (adverP === null) {
+            
+            let advertencia = document.createElement("P")
+            advertencia.id = "advercodigo"
+            advertencia.style.color = "red"
+            advertencia.style.fontSize = "small"
+            advertencia.innerHTML = "El numero de factura debe ser el siguiente formato 2020-12-A-1234"
+
+            tdDePrueba.appendChild(advertencia)
+
+            setTimeout(() => {
+                tdDePrueba.removeChild(advertencia);
+            }, 4500)
+        }
+        return false
+    }
+    return true
+}
 
 function validaciones() {
 
     let x = opValidacion()
     let y = canValidacion()
     let z = porcValidacion()
-    if (x && y && z) {
+    let s = validacionCodigo()
+    if (x && y && z && s) {
 
         return true
     } else {
@@ -114,7 +140,7 @@ const AñadirProducto = (e) => {
 
         let producto = {
 
-            // idProducto: con += 1, // discutir con jose despues
+            idProducto: codigoproducto.value, 
             nomproducto: opcion.value,
             descrip: descripcion.value,
             cantidad: cantidad.value,
@@ -127,7 +153,7 @@ const AñadirProducto = (e) => {
         if (BuscarProducto(producto) == false) {
 
             let idProducto = document.createElement("td")
-            idProducto.innerHTML = con += 1;
+            idProducto.innerHTML = codigoproducto.value;
 
             let nomprotd = document.createElement("td")
             nomprotd.innerHTML = producto.nomproducto
@@ -153,10 +179,11 @@ const AñadirProducto = (e) => {
             let botonEliminar = document.createElement("button")
             botonEliminar.innerHTML = "Eliminar"
             botonEliminar.className = "button is-small is-danger";
-            botonEliminar.id = `botonEliminar${con}`
-            botonEliminar.setAttribute("onclick",`Eliminar(${con})`)
+            botonEliminar.id = `botonEliminar${codigoproducto.value}`
+            botonEliminar.setAttribute("onclick",`Eliminar(${codigoproducto.value})`)
+
             let fila = document.createElement("tr")
-            fila.id = `filaN${con}`;
+            fila.id = `filaN${codigoproducto.value}`;
             fila.appendChild(idProducto)
             fila.appendChild(nomprotd)
             fila.appendChild(descripciontd)
@@ -177,7 +204,7 @@ const AñadirProducto = (e) => {
         } else {
             adverRep.style.color = "red"
             adverRep.style.fontSize = "medium"
-            adverRep.innerHTML = "Los productos no se pueden repetir"
+            adverRep.innerHTML = "Los productos no se pueden repetir / ni los codigos"
             setTimeout(() => {
                 adverRep.innerHTML = ""
             }, 3500)
@@ -185,7 +212,7 @@ const AñadirProducto = (e) => {
     }
 }
 
-const Eliminar = (id) => {
+const Eliminar = (id) => {//TODO falta eliminar del set 
 
 const elemento=document.getElementById(`filaN${id}`)
 tabla.removeChild(elemento);
@@ -196,12 +223,14 @@ function BuscarProducto(producto){
 
 
     for (let productoI of datos) {
-        if (productoI.nomproducto == producto.nomproducto) {
+        if (productoI.nomproducto == producto.nomproducto || productoI.codigoproducto == producto.codigoproducto) {
             return true
         }
     }
     return false
 }
+
+
 
 
 envio.addEventListener("click", AñadirProducto)
