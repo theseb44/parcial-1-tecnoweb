@@ -154,7 +154,7 @@ const AñadirProducto = (e) => {
             botonEliminar.innerHTML = "Eliminar"
             botonEliminar.className = "button is-small is-danger";
             botonEliminar.id = `botonEliminar${con}`
-
+            botonEliminar.setAttribute("onclick",`Eliminar(${con})`)
             let fila = document.createElement("tr")
             fila.id = `filaN${con}`;
             fila.appendChild(idProducto)
@@ -173,6 +173,7 @@ const AñadirProducto = (e) => {
 
 
             datos.add(producto)
+            console.log(producto)
         } else {
             adverRep.style.color = "red"
             adverRep.style.fontSize = "medium"
@@ -184,11 +185,11 @@ const AñadirProducto = (e) => {
     }
 }
 
-const EliminarProducto = () => {
+const Eliminar = (id) => {
 
-    let filaN = document.getElementById(`filaN${con += 1}`)
-    //TODO falta pensar como saber en que fila esta el producto al que se le presiono el eliminar
-    //filaN se utilizara para eliminar la fila despues que se encuentre
+const elemento=document.getElementById(`filaN${id}`)
+tabla.removeChild(elemento);
+
 }
 
 function BuscarProducto(producto){
@@ -207,4 +208,4 @@ envio.addEventListener("click", AñadirProducto)
 
 
 botonBuscar.addEventListener("click", BuscarProducto)
-botonEliminar.addEventListener("click", EliminarProducto)
+botonEliminar.addEventListener("click", Eliminar)
