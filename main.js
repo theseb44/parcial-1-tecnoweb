@@ -9,42 +9,89 @@ let envio = document.getElementById("envio")
 let tdOpcion = document.getElementById("validaOpcion")
 let tdCan = document.getElementById("validaCantidad")
 let tddescuento = document.getElementById("validaDescuento")
+let datos = new Set();
+let con = 0
+let botonEliminar = document.getElementById("botonEliminar")
+let botonBuscar = document.getElementById("botonBuscar")
+let Npedido = document.getElementById("Npedido")
 
 
+const opValidacion = () => {
+    let adverP = document.getElementById("adverOP")
+    if (opcion.value === "Ninguno") {
+        if (adverP === null) {
+            let advertencia = document.createElement("P")
+            advertencia.id = "adverOP"
+            advertencia.style.color = "red"
+            advertencia.style.fontSize = "small"
+            advertencia.innerHTML = "NO puede contener ese valor"
 
+            tdOpcion.appendChild(advertencia)
+
+            setTimeout(() => {
+                tdOpcion.removeChild(advertencia)
+            }, 2500)
+        }
+
+        return false
+
+    }
+    return true
+}
+
+const canValidacion = () => {
+    let adverP = document.getElementById("adverCan")
+    if (+cantidad.value > 30 || +cantidad.value < 0) {
+        if (adverP === null) {
+            let advertencia = document.createElement("P")
+            advertencia.id = "adverCan"
+            advertencia.style.color = "red"
+            advertencia.style.fontSize = "small"
+            advertencia.innerHTML = "la cantidad debe ser menor de 30 y mayor que 0"
+
+            tdCan.appendChild(advertencia)
+
+            setTimeout(() => {
+                tdCan.removeChild(advertencia)
+            }, 3500)
+        }
+        return false
+    }
+    return true
+}
+
+const porcValidacion = () => {
+    let adverP = document.getElementById("adverPorc")
+    if (+porcdescuento.value > 50) {
+        if (adverP === null) {
+            let advertencia = document.createElement("P")
+            advertencia.id = "adverPorc"
+            advertencia.style.color = "red"
+            advertencia.style.fontSize = "small"
+            advertencia.innerHTML = "NO puede ser mayor de 50"
+
+            tddescuento.appendChild(advertencia)
+
+            setTimeout(() => {
+                tddescuento.removeChild(advertencia);
+            }, 4500)
+        }
+        return false
+    }
+    return true
+}
 
 function validaciones() {
 
-    let advertencia = document.createElement("P")
-    if (opcion.value === "Ninguno") {
+    let x = opValidacion()
+    let y = canValidacion()
+    let z = porcValidacion()
+    if (x && y && z) {
 
-        advertencia.innerHTML = "NO puede contener ese valor"
-        advertencia.style.color = "red"
-        advertencia.style.fontSize = "small"
-        tdOpcion.appendChild(advertencia)
-        
-        return false
-    } 
-    if(+cantidad.value > 30 || +cantidad.value < 0){
-        advertencia.innerHTML = "la cantidad debe ser menor de 30 y mayor que 0"
-        advertencia.style.color = "red"
-        advertencia.style.fontSize = "small"
-        tdCan.appendChild(advertencia)
-        
+        return true
+    } else {
         return false
     }
-
-    if(+porcdescuento.value > 50){
-
-        advertencia.innerHTML = "NO puede ser mayor de 50"
-        advertencia.style.color = "red"
-        advertencia.style.fontSize = "small"
-        tddescuento.appendChild(advertencia)
-        
-        return false    
-    }
-
-    return true
 }
 
 
@@ -62,11 +109,11 @@ const AñadirProducto = (e) => {
 
     e.preventDefault();
 
-    if (validaciones() == false) {
-        alert("nada manito")
-    } else {
+    if (validaciones() == true) {
+
         let producto = {
 
+            idProducto: con += 1,
             nomproducto: opcion.value,
             descrip: descripcion.value,
             cantidad: cantidad.value,
@@ -75,6 +122,9 @@ const AñadirProducto = (e) => {
             importe: costimporte.value
 
         };
+
+        let idProducto = document.createElement("td")
+        idProducto.innerHTML = con += 1;
 
         let nomprotd = document.createElement("td")
         nomprotd.innerHTML = producto.nomproducto
@@ -97,7 +147,14 @@ const AñadirProducto = (e) => {
         let total = document.createElement("td")
         total.innerHTML = calcularTotal();
 
+        let botonEliminar = document.createElement("button")
+        botonEliminar.innerHTML = "Eliminar"
+        botonEliminar.className = "button is-small is-danger";
+        botonEliminar.id = "botonEliminar"
+
         let fila = document.createElement("tr")
+        fila.id = `filaN${con += 1}`;
+        fila.appendChild(idProducto)
         fila.appendChild(nomprotd)
         fila.appendChild(descripciontd)
         fila.appendChild(cantidadtd)
@@ -105,9 +162,35 @@ const AñadirProducto = (e) => {
         fila.appendChild(descuentotd)
         fila.appendChild(importetd)
         fila.appendChild(total)
+        fila.appendChild(botonEliminar)
 
         console.log(producto)
         tabla.appendChild(fila)
+
+        datos.add(producto)
     }
 }
+
+const EliminarProducto = () => {
+
+    let filaN = document.getElementById(`filaN${con += 1}`)
+    //TODO falta pensar como saber en que fila esta el producto al que se le presiono el eliminar
+    //filaN se utilizara para eliminar la fila despues que se encuentre
+}
+
+const BuscarProducto = () => {
+
+
+    for (let producto of datos) {
+        if (producto.idProducto === Npedido) {
+            //TODO falta pensar como mostrarlo
+        }
+    }
+}
+
+
 envio.addEventListener("click", AñadirProducto)
+
+
+botonBuscar.addEventListener("click", BuscarProducto)
+botonEliminar.addEventListener("click", EliminarProducto)

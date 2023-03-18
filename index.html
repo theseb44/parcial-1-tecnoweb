@@ -67,7 +67,7 @@
                     <td>
                         <input type="text" class="input is-success is-small codigo"
                             pattern="([2020-2030]{4})-([1-12]{2})-([A-Z]{1})-([0-9]{4})"
-                            title="formato correcto: 2020-12-A-1234" placeholder="codigo de factura" name="codigo">
+                            title="formato correcto: 2020-12-A-1234" placeholder="codigo de factura" disabled name="codigo">
                     </td>
                 </tr>
                 <tr>
@@ -81,7 +81,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="pedido" class=" has-text-right has-text-weight-bold"> N de pedido</label>
+                        <label for="pedido" class=" has-text-right has-text-weight-bold" id="Npedido"> N de pedido</label>
                     </td>
                     <td>
                         <input type="text" class="input is-success is-small pedido" placeholder="ingresar pedido"
@@ -103,7 +103,14 @@
                     </td>
                     <td>
                         <input type="text" class="input is-success is-small vencimiento"
-                            placeholder="ingresar vencimiento" name="vencimiento">
+                            placeholder="ingresar vencimiento" name="vencimiento" disabled>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <Button class="button is-success" id="botonBuscar">Buscar producto</Button>
                     </td>
                 </tr>
 
@@ -127,6 +134,7 @@
 
                 </tr>
                 <tr>
+                    
 
                     <td id="validaOpcion">
                         <div class="select is-success">
@@ -155,7 +163,7 @@
                     </td>
                     <td id="validaDescuento">
                         <input type="text" class="input is-success is-small descuento" id="descuento" max="50"
-                            placeholder="ingresa descuento" required>
+                            placeholder="ingresa descuento" >
                     </td>
                     <td><input type="text" class="input is-success is-small importe" id="importe"
                             placeholder="ingresa el costo de importe" required></td>
@@ -179,6 +187,7 @@
         <h1 class="title is-3">Factura</h1>
         <table class="table is-fullwidth " id="Tproductos">
             <tr class="has-background-grey-lighter">
+                <th>Id</th>
                 <th>Producto</th>
                 <th>Descripcion</th>
                 <th>Cant.</th>
@@ -186,6 +195,7 @@
                 <th>% de descuento</th>
                 <th>Importe</th>
                 <th>Total</th>
+                <th class="is-centered"></th>
             </tr>
         </table>
     </div>
