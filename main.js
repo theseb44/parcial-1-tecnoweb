@@ -18,7 +18,8 @@ let adverRep = document.getElementById("adverRepeticion");
 let codigofactura = document.getElementById("codigoFactura");
 let tdvalCodigo = document.getElementById("tdprueba");
 let botonGuardarF = document.getElementById("botonGuardar");
-
+let comprador = document.getElementById("comprador")
+let receptor = document.getElementById("receptor")
 
 
 
@@ -255,6 +256,8 @@ const GuardarFactura = () => {
         let factura = {
             IdFactura: codigofactura.value,
             ConjuntoDatos: datos,
+            compradorr: comprador.value,
+            receptorr: receptor.value,
             totalaPagar: totalFactura()
         }        
     }
