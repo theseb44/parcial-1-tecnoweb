@@ -132,13 +132,15 @@ function calcularTotal() { //este es el total a pagar por el producto
 
 function totalFactura() {// este es el total completo de toda la factura
     let total = 0;
-    let hijo;
-    for (let i = 1; i < tabla.childElementCount; i++) {
-        hijo = tabla.querySelector(`#filaN${con}`)
-        total += +hijo.children[7].innerHTML
+    
+    for (let obj of datos) {
+        total += +obj.total
+        
     }
     return total
 }
+
+
 
 const AñadirProducto = (e) => {
     e.preventDefault();
@@ -153,6 +155,7 @@ const AñadirProducto = (e) => {
             descuento: porcdescuento.value,
             precio: precioUni.value,
             importe: costimporte.value,
+            total: calcularTotal(),
         };
 
         if (BuscarProducto(producto) == false) {
@@ -177,8 +180,8 @@ const AñadirProducto = (e) => {
             let importetd = document.createElement("td");
             importetd.innerHTML = producto.importe;
 
-            let total = document.createElement("td");
-            total.innerHTML = calcularTotal();
+            let totaltd = document.createElement("td");
+            totaltd.innerHTML = producto.total;
 
             let botonEliminar = document.createElement("button");
             botonEliminar.innerHTML = "Eliminar";
@@ -200,7 +203,7 @@ const AñadirProducto = (e) => {
             fila.appendChild(preciotd);
             fila.appendChild(descuentotd);
             fila.appendChild(importetd);
-            fila.appendChild(total);
+            fila.appendChild(totaltd);
             fila.appendChild(botonEliminar);
 
             console.log(producto);
@@ -229,7 +232,6 @@ const Eliminar = (id) => {
 
     for (let obj of datos) {
         if (obj.idProducto == id) {
-            console.log(obj.idProducto)
             datos.delete(obj);
             break;
         }
@@ -259,7 +261,7 @@ const GuardarFactura = () => {
             compradorr: comprador.value,
             receptorr: receptor.value,
             totalaPagar: totalFactura()
-        }        
+        }
     }
 }
 
