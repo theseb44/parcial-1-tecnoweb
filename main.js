@@ -132,9 +132,9 @@ function calcularTotal() { //este es el total a pagar por el producto
 function totalFactura() {// este es el total completo de toda la factura
     let total = 0;
     let hijo;
-    for (let i = 0; i < tabla.childElementCount; i++) {
+    for (let i = 1; i < tabla.childElementCount; i++) {
         hijo = tabla.querySelector(`#filaN${con}`)
-        total += hijo.children[7].innerHTML
+        total += +hijo.children[7].innerHTML
     }
     return total
 }
@@ -250,13 +250,13 @@ function BuscarProducto(producto) {
 
 const GuardarFactura = () => {
 
-    if (validacionCodigo() = true) {
+    if (validacionCodigo() == true) {
 
         let factura = {
             IdFactura: codigofactura.value,
             ConjuntoDatos: datos,
             totalaPagar: totalFactura()
-        }
+        }        
     }
 }
 
