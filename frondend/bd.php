@@ -15,7 +15,7 @@ $json = file_get_contents('php://input');
 $objetos = json_decode($json);
 
 
-var_dump($objetos);
+echo var_dump($objetos);
 
 foreach ($objetos as $objeto) {
     $idProducto=$objeto->idProducto . "\n";
@@ -26,11 +26,13 @@ foreach ($objetos as $objeto) {
     $precio= $objeto->precio . "\n";
     $importe= $objeto->importe . "\n";
 
-    $sql = "INSERT INTO factura (Nombre, Enviar_a, N_factura, Producto, Descripcion, Cant, Precio_unitario, descuento, Importe) VALUES('luis','jose','$idProducto','$nomproducto','$descrip', '$cantidad','$precio', '$descuento','$importe')";
+    $sql= "INSERT INTO factura (Nombre, Enviar_a, N_factura, Producto, Descripcion, Cant, Precio_unitario, descuento, Importe) VALUES('luis','jose','$idProducto','$nomproducto','$descrip', '$cantidad','$precio', '$descuento','$importe')";
 
-    
+    mysqli_query($conexion,$sql);
 }
-mysqli_query($conexion,$sql);
+
+
+
 
 
 

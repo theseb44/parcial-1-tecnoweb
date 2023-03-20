@@ -250,7 +250,7 @@ function BuscarProducto(producto) {
 
 const GuardarFactura = () => {
   if (validacionCodigo() == true) {
-
+    console.log("estas en xampp")
     let arrayDatos = [...datos];
     let valores = JSON.stringify(arrayDatos);
     fetch('bd.php', {
@@ -264,55 +264,12 @@ const GuardarFactura = () => {
       .then((response) => response.text())
       .then((data) => console.log(data))
       .catch((error) => console.error(error));
-
-
-
-
-    /*
-        let factura = {
-          IdFactura: codigofactura.value,
-          ConjuntoDatos: datos,
-          compradorr: comprador.value,
-          receptorr: receptor.value,
-          //totalaPagar: totalFactura()
-        };
-        */
   }
 };
 
-const BuscarFactura = () => {
-
-  function obtenerUsuario(id) {
-    // Crea una nueva petición Fetch con el método GET y la URL de la API
-    fetch(`api/usuarios.php?id=${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => {
-      // Si la respuesta no es satisfactoria, lanza un error
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      // Si la respuesta es satisfactoria, la devuelve como un objeto JSON
-      return response.json();
-    })
-    .then(usuario => {
-      // Accede a las propiedades del objeto
-      console.log(usuario.nombre);
-      console.log(usuario.apellido);
-      console.log(usuario.email);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  }
-  
-}
 
 
-botonBuscar.addEventListener("click", BuscarFactura)
+
 botonGuardarF.addEventListener("click", GuardarFactura);
 envio.addEventListener("click", AñadirProducto);
 botonBuscar.addEventListener("click", BuscarProducto);
