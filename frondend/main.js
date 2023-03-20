@@ -12,7 +12,7 @@ let tddescuento = document.getElementById("validaDescuento");
 let datos = new Set();
 let con = 0;
 let botonEliminar = document.getElementById("botonEliminar");
-let botonBuscar = document.getElementById("botonBuscar");
+let botonBuscar = document.getElementById("buscarFactura");
 let Npedido = document.getElementById("Npedido");
 let adverRep = document.getElementById("adverRepeticion");
 let codigofactura = document.getElementById("codigoFactura");
@@ -20,6 +20,8 @@ let tdvalCodigo = document.getElementById("tdprueba");
 let botonGuardarF = document.getElementById("botonGuardar");
 let comprador = document.getElementById("comprador");
 let receptor = document.getElementById("receptor");
+
+
 
 const pattern = /^([2020-2022]{4})-([1-12]{2})-([A-Z]{1})-([0-9]{4})$/;
 
@@ -278,6 +280,39 @@ const GuardarFactura = () => {
   }
 };
 
+const BuscarFactura = () => {
+
+  function obtenerUsuario(id) {
+    // Crea una nueva petición Fetch con el método GET y la URL de la API
+    fetch(`api/usuarios.php?id=${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      // Si la respuesta no es satisfactoria, lanza un error
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      // Si la respuesta es satisfactoria, la devuelve como un objeto JSON
+      return response.json();
+    })
+    .then(usuario => {
+      // Accede a las propiedades del objeto
+      console.log(usuario.nombre);
+      console.log(usuario.apellido);
+      console.log(usuario.email);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+  
+}
+
+
+botonBuscar.addEventListener("click", BuscarFactura)
 botonGuardarF.addEventListener("click", GuardarFactura);
 envio.addEventListener("click", AñadirProducto);
 botonBuscar.addEventListener("click", BuscarProducto);
